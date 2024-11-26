@@ -80,26 +80,26 @@ public class AlunoDAO {
         return null;
     }
 
-    public List<Aluno> listarTodos() {
-        List<Aluno> alunos = new ArrayList<>();
-        String sql = "SELECT * FROM Aluno";
-        try (Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                Aluno aluno = new Aluno(
-                        rs.getString("cpf"),
-                        rs.getString("nome"),
-                        rs.getDate("data_nascimento").toLocalDate(),
-                        rs.getDouble("peso"),
-                        rs.getDouble("altura")
-                );
-                alunos.add(aluno);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao listar alunos: " + e.getMessage(), e);
-        }
-        return alunos;
-    }
+//    public List<Aluno> listarTodos() {
+//        List<Aluno> alunos = new ArrayList<>();
+//        String sql = "SELECT * FROM Aluno";
+//        try (Statement stmt = connection.createStatement();
+//             ResultSet rs = stmt.executeQuery(sql)) {
+//            while (rs.next()) {
+//                Aluno aluno = new Aluno(
+//                        rs.getString("cpf"),
+//                        rs.getString("nome"),
+//                        rs.getDate("data_nascimento").toLocalDate(),
+//                        rs.getDouble("peso"),
+//                        rs.getDouble("altura")
+//                );
+//                alunos.add(aluno);
+//            }
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Erro ao listar alunos: " + e.getMessage(), e);
+//        }
+//        return alunos;
+//    }
 
     public void gravaIMC(Aluno aluno) {
         double imc = aluno.calculaIMC();
