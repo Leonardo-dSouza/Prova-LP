@@ -1,5 +1,6 @@
 package dao;
 
+import factory.ConnectionFactory;
 import model.Aluno;
 
 import java.io.BufferedWriter;
@@ -15,10 +16,9 @@ public class AlunoDAO {
 
     public AlunoDAO() {
         try {
-            // Conexão com o banco de dados
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/LP", "root", "kali");
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao conectar ao banco de dados: " + e.getMessage());
+            this.connection = ConnectionFactory.getConnection();
+        } catch (RuntimeException e) {
+            throw new RuntimeException("Erro ao inicializar AlunoDAO: " + e.getMessage(), e);
         }
     }
 
@@ -32,7 +32,7 @@ public class AlunoDAO {
             stmt.setDouble(5, aluno.getAltura());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao inserir aluno: " + e.getMessage());
+            throw new RuntimeException("Erro ao inserir aluno: " + e.getMessage(), e);
         }
     }
 
@@ -42,7 +42,7 @@ public class AlunoDAO {
             stmt.setString(1, cpf);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao excluir aluno: " + e.getMessage());
+            throw new RuntimeException("Erro ao excluir aluno: " + e.getMessage(), e);
         }
     }
 
@@ -56,7 +56,7 @@ public class AlunoDAO {
             stmt.setString(5, aluno.getCpf());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao atualizar aluno: " + e.getMessage());
+            throw new RuntimeException("Erro ao atualizar aluno: " + e.getMessage(), e);
         }
     }
 
@@ -75,7 +75,7 @@ public class AlunoDAO {
                 );
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao consultar aluno: " + e.getMessage());
+            throw new RuntimeException("Erro ao consultar aluno: " + e.getMessage(), e);
         }
         return null;
     }
@@ -96,7 +96,7 @@ public class AlunoDAO {
                 alunos.add(aluno);
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao listar alunos: " + e.getMessage());
+            throw new RuntimeException("Erro ao listar alunos: " + e.getMessage(), e);
         }
         return alunos;
     }
@@ -119,7 +119,7 @@ public class AlunoDAO {
             writer.newLine();
             writer.newLine();
         } catch (IOException e) {
-            throw new RuntimeException("Erro ao gravar IMC no arquivo: " + e.getMessage());
+            throw new RuntimeException("Erro ao gravar IMC no arquivo: " + e.getMessage(), e);
         }
     }
 
