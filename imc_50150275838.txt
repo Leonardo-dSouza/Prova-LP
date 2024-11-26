@@ -1,0 +1,12 @@
+Data do cálculo: 2024-11-26
+CPF: 50150275838
+Nome: leonardo de souza
+IMC: 0.0025795918367346937
+Interpretação: Abaixo do peso
+
+Data do cálculo: 2024-11-26
+CPF: 50150275838
+Nome: leonardo de souza
+IMC: 25.79591836734694
+Interpretação: Sobrepeso
+
