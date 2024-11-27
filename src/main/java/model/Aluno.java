@@ -1,5 +1,8 @@
 package model;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class Aluno {
@@ -58,5 +61,41 @@ public class Aluno {
     // Metodo para calcular o IMC
     public double calculaIMC() {
         return peso / (altura * altura);
+    }
+
+
+
+    public void gravaIMC(Aluno aluno) {
+        double imc = aluno.calculaIMC();
+        String interpretacao = interpretaIMC(imc);
+        String filename = "imc_" + aluno.getCpf() + ".txt";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
+            writer.write("Data do cálculo: " + LocalDate.now());
+            writer.newLine();
+            writer.write("CPF: " + aluno.getCpf());
+            writer.newLine();
+            writer.write("Nome: " + aluno.getNome());
+            writer.newLine();
+            writer.write("IMC: " + imc);
+            writer.newLine();
+            writer.write("Interpretação: " + interpretacao);
+            writer.newLine();
+            writer.newLine();
+        } catch (IOException e) {
+            throw new RuntimeException("Erro ao gravar IMC no arquivo: " + e.getMessage(), e);
+        }
+    }
+
+    private String interpretaIMC(double imc) {
+        if (imc < 18.5) {
+            return "Abaixo do peso";
+        } else if (imc >= 18.5 && imc < 24.9) {
+            return "Peso normal";
+        } else if (imc >= 25 && imc < 29.9) {
+            return "Sobrepeso";
+        } else {
+            return "Obesidade";
+        }
     }
 }

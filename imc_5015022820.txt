@@ -1,0 +1,6 @@
+Data do cálculo: 2024-11-27
+CPF: 5015022820
+Nome: leonardo
+IMC: 24.691358024691358
+Interpretação: Peso normal
+

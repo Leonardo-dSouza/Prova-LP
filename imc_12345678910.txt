@@ -1,0 +1,12 @@
+Data do cálculo: 2024-11-27
+CPF: 12345678910
+Nome: joao paulo
+IMC: 25.79591836734694
+Interpretação: Sobrepeso
+
+Data do cálculo: 2024-11-27
+CPF: 12345678910
+Nome: joao paulo
+IMC: 22.857142857142858
+Interpretação: Peso normal
+

@@ -133,7 +133,7 @@ public class AlunoGUI extends JFrame {
                 try {
                     Aluno aluno = alunoDAO.consultaAluno(tfCpf.getText());
                     if (aluno != null) {
-                        alunoDAO.gravaIMC(aluno);
+                        aluno.gravaIMC(aluno);
                         double imc = aluno.calculaIMC();
                         String interpretacao = imc < 18.5 ? "Abaixo do peso" : (imc < 24.9 ? "Peso normal" : (imc < 29.9 ? "Sobrepeso" : "Obesidade"));
                         JOptionPane.showMessageDialog(null, "IMC calculado: " + imc + " (" + interpretacao + ")");
